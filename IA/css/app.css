@@ -74,6 +74,23 @@ body {
 .chat-message-ia .underline { text-decoration: underline; }
 .chat-message-ia ul { list-style-type: disc; margin-left: 20px; padding-left: 0; }
 .chat-message-ia li { margin-bottom: 5px; }
+/* Correção para rolagem de mensagens longas da IA */
+.chat-message-ia {
+    /* ... (outras propriedades existentes, não remova) ... */
+    max-height: 400px; /* Limita a altura da bolha de mensagem da IA */
+    overflow-y: auto;  /* Adiciona barra de rolagem se o conteúdo exceder a altura */
+    white-space: pre-wrap; /* Preserva quebras de linha e espaços, mas permite quebrar a linha */
+    word-wrap: break-word; /* Garante que palavras muito longas quebrem */
+}
+
+/* Opcional: Se quiser o mesmo para mensagens do usuário */
+.chat-message-user {
+    /* ... (outras propriedades existentes, não remova) ... */
+    max-height: 400px; /* Limita a altura da bolha de mensagem do usuário */
+    overflow-y: auto;  /* Adiciona barra de rolagem se o conteúdo exceder a altura */
+    white-space: pre-wrap; /* Preserva quebras de linha e espaços, mas permite quebrar a linha */
+    word-wrap: break-word; /* Garante que palavras muito longas quebrem */
+}
 
 /* Estilos da seleção de ferramenta na sidebar */
 .tool-item {

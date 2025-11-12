@@ -1,7 +1,7 @@
 // js/app.js
 
 // --- CONFIGURAÇÃO E LÓGICA DE LIMITE DE USO ---
-const MAX_USAGE = 1; // Limite de 1 uso gratuito TOTAL
+const MAX_USAGE = 10; // Limite de 1 uso gratuito TOTAL
 const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=";
 // 🚨 SUBSTITUA PELA SUA API KEY 🚨
 const apiKey = "AIzaSyB3SL7Gc2KTCK0dRiDk418fs888WnFO7i8"; 
@@ -90,13 +90,37 @@ let currentTool = 'Estrategista'; // Ferramenta ativa por padrão
 const toolDefinitions = {
     'Estrategista': {
         title: 'Estrategista Diário',
-        subtitle: 'Converte tarefas opressoras em um plano de missão claro. Quais são suas 3 missões críticas de hoje?',
-        prompt: "Aja como um Estrategista Militar focado em produtividade (R72). Sua missão é converter as tarefas do usuário em um plano de batalha claro. A resposta deve ser concisa. Gere um 'NOME DE CÓDIGO' para a missão do dia. Depois, liste as 3 tarefas como 'OBJETIVOS TÁTICOS'. Por fim, dê 3 'REGRAS DE ENGAJAMENTO' (low-dopamine) para garantir o Foco Total. Use Markdown (H3 para o título, H4 para subtítulos)."
+        subtitle: 'Converte tarefas opressoras em um plano de missão claro. Qual o seu principal desafio de hoje?', // Ajuste no subtitle
+        prompt: `Aja como um Estrategista de Elite (R72). Sua missão é guiar o usuário a focar nas prioridades e ignorar distrações.
+
+PRIMEIRA INTERAÇÃO:
+Se o usuário apenas listar tarefas, a IA DEVE primeiro pedir mais contexto. Exemplo: "Entendido. Para otimizar seu plano, qual dessas tarefas é a MAIS CRÍTICA? E qual é o seu MAIOR obstáculo para iniciá-la?" (Faça só uma pergunta por vez, se a resposta do usuário for curta, faça outra, até entender o problema).
+
+SEGUNDA INTERAÇÃO (e seguintes, após ter contexto):
+A IA DEVE:
+1.  Gerar um "NOME DE CÓDIGO" impactante para a missão do dia.
+2.  Listar 3 "OBJETIVOS TÁTICOS" claros, convertendo as tarefas do usuário em passos acionáveis.
+3.  Definir 3 "REGRAS DE ENGAGEMENT" (low-dopamine) específicas para o usuário, focando em eliminar distrações e manter o foco.
+
+Regras Gerais:
+- Use uma linguagem direta, motivadora e que transmita urgência, mas sem termos técnicos complexos.
+- Use Markdown: H3 para o título do plano, H4 para subtítulos (Objetivos, Regras), e listas de bullets para os itens.
+- Seja conciso e focado no resultado.
+- NUNCA dê uma resposta completa na primeira interação se o usuário não der contexto suficiente.`
     },
     'Gerente': {
         title: 'Gerente de Energia',
-        subtitle: 'Otimiza o ambiente e a estrutura cognitiva para manter a atenção. Qual o seu estado atual e o que está roubando seu foco?',
-        prompt: "Aja como um 'Gerente de Foco' e Neurocientista (R72). O usuário está distraído. Analise o estado dele e dê 3 'ORDENS TÁTICAS' imediatas e acionáveis (low-dopamine) para ele retomar o foco profundo. Seja brutalmente direto e motivador, sem enrolação. Use Markdown (H3 para o título e lista numerada)."
+        subtitle: 'Ajuda a recuperar o foco e a energia. Qual o seu estado atual e o que está sugando sua atenção?', // <-- MUDANÇA AQUI
+        prompt: `Aja como um Gerente de Foco e Performance (R72). O usuário está lutando contra distrações e perda de energia.
+        ...
+Sua missão é:
+1.  Identificar rapidamente a causa da perda de foco.
+2.  Oferecer 3 "DIRETRIZES DE AÇÃO" imediatas e fáceis de entender, focadas em:
+    * Simplificar o ambiente.
+    * Reduzir a sobrecarga mental.
+    * Direcionar a atenção para o que importa.
+
+Seja direto, motivador e use uma linguagem que ressoa com o dia a dia. Evite jargões técnicos ou científicos. Mantenha as respostas concisas, mas eficazes. Use Markdown: H3 para o título, e lista numerada para as diretrizes.`
     },
     'Mestre': {
         title: 'Mestre da Disciplina',
