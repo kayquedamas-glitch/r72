@@ -1,0 +1,128 @@
+/* css/app.css */
+
+/* Estilos R72 Base */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #111111; /* OffBlack */
+    color: #ffffff;
+}
+.brutal-red { color: #CC0000; }
+.bg-brutal-red { background-color: #CC0000; }
+.border-brutal-red { border-color: #CC0000; }
+.shadow-red-strong { box-shadow: 0 10px 15px -3px rgba(204, 0, 0, 0.5), 0 4px 6px -2px rgba(204, 0, 0, 0.2); }
+
+/* Layout de App */
+.app-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr; /* Sidebar fixa e área de chat */
+    height: 100vh; /* Ocupa 100% da altura da viewport */
+    overflow: hidden; /* Evita scroll indesejado no grid */
+}
+.sidebar {
+    background-color: #1a1a1a;
+    border-right: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+}
+.chat-area {
+    display: flex;
+    flex-direction: column;
+    background-color: #111111;
+}
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto; /* Scroll para as mensagens */
+    padding: 20px;
+    scroll-behavior: smooth; /* Anima o scroll para novas mensagens */
+}
+.chat-input-container {
+    border-top: 1px solid #333;
+    padding: 15px 20px;
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+}
+.chat-input {
+    background-color: #333333;
+    border: 1px solid #555555;
+    color: #ffffff;
+    resize: none;
+    overflow-y: auto;
+    max-height: 150px; /* Limita a altura do input */
+}
+.chat-message-user {
+    background-color: #333333;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    align-self: flex-end; /* Mensagens do usuário à direita */
+    max-width: 80%;
+}
+.chat-message-ia {
+    background-color: #0c0c0c;
+    border: 1px solid #333333;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    align-self: flex-start; /* Mensagens da IA à esquerda */
+    max-width: 80%;
+}
+/* Formatação Markdown dentro da bolha de chat */
+.chat-message-ia .brutal-red { color: #CC0000; } 
+.chat-message-ia .font-bold { font-weight: 700; }
+.chat-message-ia .uppercase { text-transform: uppercase; }
+.chat-message-ia .underline { text-decoration: underline; }
+.chat-message-ia ul { list-style-type: disc; margin-left: 20px; padding-left: 0; }
+.chat-message-ia li { margin-bottom: 5px; }
+
+/* Estilos da seleção de ferramenta na sidebar */
+.tool-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    border-radius: 8px; /* Cantos arredondados */
+    margin-bottom: 5px; /* Espaçamento entre itens */
+}
+.tool-item:hover {
+    background-color: #2a2a2a;
+}
+.tool-item.active {
+    background-color: #CC0000;
+    font-weight: bold;
+    color: #ffffff;
+}
+.tool-item.active:hover {
+    background-color: #CC0000; /* Mantém vermelho no hover se ativo */
+}
+
+/* Loading Spinner */
+#loadingSpinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #CC0000;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Scrollbar styles (Optional, for better aesthetics) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+::-webkit-scrollbar-thumb {
+    background: #444444;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555555;
+}

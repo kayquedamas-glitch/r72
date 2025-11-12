@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R72 - Arsenal IA</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body class="h-full">
+
+<div class="app-layout">
+    
+    <aside class="sidebar p-4">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-black brutal-red tracking-wider">R72 IA</h2>
+            <button id="newChatBtn" class="bg-[#333] text-white p-2 rounded-full hover:bg-[#555] transition">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+
+        <nav class="mb-8">
+            <h3 class="text-gray-400 text-sm mb-3 uppercase tracking-wider font-bold">Ferramentas de IA</h3>
+            <ul>
+                <li><div id="toolEstrategista" class="tool-item active"><i class="fas fa-flag-checkered mr-3"></i> Estrategista Diário</div></li>
+                <li><div id="toolGerente" class="tool-item"><i class="fas fa-brain mr-3"></i> Gerente de Energia</div></li>
+                <li><div id="toolMestre" class="tool-item"><i class="fas fa-dumbbell mr-3"></i> Mestre da Disciplina</div></li>
+                <li><div id="toolAuditor" class="tool-item"><i class="fas fa-chart-line mr-3"></i> Auditor de Hábitos</div></li>
+            </ul>
+        </nav>
+
+        <div class="flex-grow overflow-y-auto pr-2">
+            <h3 class="text-gray-400 text-sm mb-3 uppercase tracking-wider font-bold">Histórico (Demo)</h3>
+            <ul id="chatHistoryList">
+                <li class="tool-item text-gray-500 italic text-sm">Nenhum histórico salvo na demo.</li>
+            </ul>
+        </div>
+        
+        <div class="mt-auto pt-6 border-t border-gray-700">
+            <div id="demoLimitSidebar" class="hidden bg-red-800 text-white text-sm p-3 rounded-md mb-4 text-center">
+                Limite de uso atingido.
+            </div>
+            <a href="index.html#planos" class="w-full bg-brutal-red text-white font-bold py-3 px-4 rounded-lg
+                hover:opacity-90 transition uppercase flex items-center justify-center text-sm">
+                <i class="fas fa-bolt mr-2"></i> Desbloquear Acesso Total
+            </a>
+        </div>
+    </aside>
+
+    <main class="chat-area">
+        
+        <div class="chat-messages pt-6 px-5 flex flex-col items-center">
+            <div classs="max-w-3xl w-full text-center mb-8 p-6 bg-[#1a1a1a] rounded-xl border border-gray-700">
+                <h3 id="chatTitle" class="text-3xl font-black brutal-red mb-2 uppercase"></h3>
+                <p id="chatSubtitle" class="text-gray-400 text-lg"></p>
+                <p id="demoUsageMessage" class="text-gray-500 text-sm mt-4"></p>
+            </div>
+            
+            <div id="messagesContainer" class="w-full max-w-3xl flex flex-col">
+                </div>
+        </div>
+
+        <div class="chat-input-container">
+            <div class="w-full max-w-3xl mx-auto flex items-center bg-[#333] rounded-lg p-2">
+                <textarea id="chatInput" rows="1" class="w-full flex-grow bg-transparent border-none outline-none resize-none px-3 py-2 text-lg" placeholder="Digite sua mensagem aqui..."></textarea>
+                <button id="sendBtn" class="bg-brutal-red text-white p-3 rounded-lg ml-3 hover:bg-red-700 transition disabled:opacity-50">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
