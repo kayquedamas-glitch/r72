@@ -1,0 +1,30 @@
+/* css/style.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #111111; /* OffBlack */
+    color: #ffffff;
+}
+.brutal-red {
+    color: #CC0000;
+}
+.bg-brutal-red {
+    background-color: #CC0000;
+}
+.border-brutal-red {
+    border-color: #CC0000;
+}
+.shadow-red-strong {
+    box-shadow: 0 10px 15px -3px rgba(204, 0, 0, 0.5), 0 4px 6px -2px rgba(204, 0, 0, 0.2);
+}
+.fixed-cta {
+    z-index: 50;
+}
+.aspect-video {
+    aspect-ratio: 16 / 9;
+}
+/* Estilo para destacar o plano popular */
+.popular-plan {
+    border: 3px solid #CC0000;
+    transform: scale(1.03);
+}
